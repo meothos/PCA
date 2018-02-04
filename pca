@@ -1,0 +1,14 @@
+Let X be the n*p matrix of the centered features (the mean is substracted). n is the number of observations and p the number of features.
+We want a new variable being a linear combination of the features in X such that the variance is maximized. That is, we look for Xc,
+c being a scaled vector of scalars, such that the variance of ||Xc||/n is maximized. ||Xc||=(Xc)'(Xc)=c'X'Xc and n is a scalar so we want
+to maximize c'X'Xc with condition ||c||=c'c=1. We introduce the function L to maximiwe with the Langragian :
+L(c,λ)=c'X'Xc-λ(c'c-1)
+Let's differentiate wrt c :
+dL(c,λ)/dc=2X'Xc-2λc=0
+=> X'Xc=λc
+So c is an eigenvector of X'X wrt eigenvalue λ. By mutiplying by c' on both sides we also have :
+c'λc=cX'Xc => λc'c=(Xc)'(Xc)=>λ=||Xc|| which we try to maximize.
+So λ is the greatest eigenvalue of X'X.
+The first principal component Xc is found by taking c as the eigenvector of X'X wrt the highest eigenvalue λ.
+For the following principal components, we take next eigenvectors wrt to the corresponding eigenvalues in decreasing order. The principal
+components will be orthogonal as X'X is symmetric.
